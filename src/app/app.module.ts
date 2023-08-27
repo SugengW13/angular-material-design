@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { DataTableComponent } from './data-table/data-table.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SidebarComponent
+    SidebarComponent,
+    DataTableComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
