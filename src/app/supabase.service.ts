@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {createClient, SupabaseClient} from "@supabase/supabase-js";
-import {environment} from "../environments/environment";
+import {environment} from "../environments/environment.development";
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +10,15 @@ export class SupabaseService {
 
   constructor() {
     this.supabase = createClient(
-      environment.supabaseUrl as string,
-      environment.supabaseKey as string
+      environment.supabaseUrl,
+      environment.supabaseKey
     )
   }
 
   async getData () {
-    let { data } = await this.supabase
-      .from('basic-table')
+    const { data } = await this.supabase
+      .from('basic_table')
       .select('*')
-    console.log(data)
   }
 }
 
