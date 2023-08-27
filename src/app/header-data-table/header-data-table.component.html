@@ -1,6 +1,9 @@
 <div style="display: flex; align-items: start">
   <mat-form-field style="margin-right: 12px">
     <mat-label>Search Data</mat-label>
-    <input matInput type="text" [(ngModel)]="searchKey" (input)="onChangeSearchKey()">
+    <input matInput type="text" #searchKey (keydown.enter)="searchData(searchKey.value)">
+    <button matSuffix mat-icon-button (click)="searchData(searchKey.value)">
+      <mat-icon>search</mat-icon>
+    </button>
   </mat-form-field>
 </div>

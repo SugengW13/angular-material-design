@@ -1,3 +1,9 @@
+<app-header-data-table
+  (onSearchData)="getDataSupabase({
+    search: { column: 'name', key: $event }
+  })"
+/>
+
 <table *ngIf="!loading" mat-table [dataSource]="dataSupabase">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>ID</th>

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import {NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
+import {SupabaseService} from "../supabase.service";
 
 @Component({
   selector: 'app-header-data-table',
@@ -21,9 +22,11 @@ import {MatInputModule} from "@angular/material/input";
   ]
 })
 export class HeaderDataTableComponent {
-  searchKey: string | null = null
+  loading: boolean = false
 
-  onChangeSearchKey () {
-    console.log(this.searchKey)
+  @Output() onSearchData = new EventEmitter<string>()
+
+  searchData (value: string) {
+    this.onSearchData.emit(value)
   }
 }

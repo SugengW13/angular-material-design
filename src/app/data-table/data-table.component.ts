@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgIf} from "@angular/common";
 import {MatTableModule} from "@angular/material/table";
 import {SupabaseService} from "../supabase.service";
+import {HeaderDataTableComponent} from "../header-data-table/header-data-table.component";
 
 export interface DataSupabase {
   id: number
@@ -19,7 +20,11 @@ export interface ResponseDataSupabase {
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css'],
   standalone: true,
-  imports: [ NgIf, MatTableModule ]
+  imports: [
+    NgIf,
+    MatTableModule,
+    HeaderDataTableComponent
+  ]
 })
 export class DataTableComponent implements OnInit {
   displayedColumns: string[] = ['id', 'created_at', 'name'];
@@ -31,13 +36,20 @@ export class DataTableComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    await this.getDataSupabase()
+    await this.getDataSupabase({})
   }
 
-  async getDataSupabase () {
+  async getDataSupabase ({
+    search = { column: 'name', key: '' }
+  }) {
     this.loading = true
 
-    await this.supabase.getData()
+    await this.supabase.getData({
+      search: {
+        column: search.column,
+        key: search.key
+      }
+    })
       .then((response) => {
         this.dataSupabase = response.data as DataSupabase[]
       })
