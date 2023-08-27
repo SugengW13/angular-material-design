@@ -15,10 +15,13 @@ export class SupabaseService {
     )
   }
 
-  async getData () {
-    const { data } = await this.supabase
+  async getData ({
+    search = { column: 'name' as string, key: '' as string }
+  }) {
+    return this.supabase
       .from('basic_table')
       .select('*')
+      .ilike(search.column, `%${search.key}%`)
   }
 }
 
