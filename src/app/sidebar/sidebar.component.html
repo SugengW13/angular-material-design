@@ -1,16 +1,17 @@
 <mat-drawer-container class="container">
   <mat-drawer #drawer>
-    [ NAVIGATION LIST ]
+    Angular Material Design
   </mat-drawer>
 
   <mat-drawer-content>
-    <div style="display: flex; align-items: center">
-      <button mat-icon-button (click)="drawer.toggle()" style="margin: -12px 20px -12px -12px">
+    <app-headbar>
+      <button navbar-trigger mat-icon-button (click)="drawer.toggle()" style="margin-right: 12px">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>[ HEADER ]</span>
-    </div>
+    </app-headbar>
 
-    <div>[ CONTENT ]</div>
+    <div style="padding: 28px">
+      <ng-content select="[app-content]" />
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>
