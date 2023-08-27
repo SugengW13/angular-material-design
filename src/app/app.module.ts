@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DataTableComponent } from './data-table/data-table.component';
+import { HeaderDataTableComponent } from './header-data-table/header-data-table.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DataTableComponent } from './data-table/data-table.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     SidebarComponent,
-    DataTableComponent
+    DataTableComponent,
+    HeaderDataTableComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
